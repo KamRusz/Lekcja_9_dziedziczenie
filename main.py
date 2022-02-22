@@ -102,7 +102,6 @@ class SpecificReader(CommonReader):
         with open(self.save_file_path, "wb") as self.file:
             pickle.dump(CommonReader.data, self.file, pickle.HIGHEST_PROTOCOL)
 
-
 def main():
     plik = SpecificReader()
     plik.testing_parameters()
@@ -123,9 +122,9 @@ def main():
     #        "pickle":SpecificReader.save_json}
     # }
     #dispatcher2["load"]["csv"]()
-    print(plik.data)
-    #plik.make_change()
-    #plik.printer()
+ 
+    plik.make_change()
+    plik.printer()
 
     if plik.save_ext == "csv":
         plik.save_csv()
