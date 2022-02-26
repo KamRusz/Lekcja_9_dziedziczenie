@@ -18,7 +18,7 @@ class Reader:
                 return self.read_inner(file)
         except FileNotFoundError:
             quit(
-                f"\nścieżka odczytu nie istnieje!\n"
+                "\nścieżka odczytu nie istnieje!\n"
                 "Poniżej lista plików z katalogu"
                 f" [{path.abspath(Path(argv[1]).parent)}]:"
                 f"\n{listdir(path.abspath(Path(argv[1]).parent))}\n"
@@ -90,14 +90,14 @@ class Manager:
             load_ext = Path(argv[1])
             if not path.exists(load_ext):
                 quit(
-                    f"\nścieżka odczytu nie istnieje!\n"
+                    "\nścieżka odczytu nie istnieje!\n"
                     "Poniżej lista plików z katalogu"
                     f" [{path.abspath(load_ext.parent)}]:"
                     f"\n{listdir(path.abspath(load_ext.parent))}\n"
                 )
             if not path.isfile(load_ext):
                 quit(
-                    f"\nścieżka odczytu nie jest plikiem!\n"
+                    "\nścieżka odczytu nie jest plikiem!\n"
                     "Poniżej lista plików z katalogu"
                     f" [{path.abspath(load_ext.parent)}]:"
                     f"\n{listdir(load_ext.parent)}\n"
@@ -112,8 +112,8 @@ class Manager:
         except IndexError:
             quit("\nnie podano scieżki zapisu")
 
-        self.reader = self.read_dict.get(load_ext.suffix, "no_ext_error")()
-        self.writer = self.write_dict.get(save_ext.suffix, "no_ext_error")()
+        self.reader = self.read_dict[load_ext.suffix]()
+        self.writer = self.write_dict[save_ext.suffix]()
 
     def execute(self):
         self.data = self.reader.read()
