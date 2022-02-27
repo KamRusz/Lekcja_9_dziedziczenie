@@ -124,7 +124,6 @@ class Manager:
     def make_change(self):
         try:
             self.changes = [x.split(",") for x in argv[3:]]
-            print(self.data)
             for change in self.changes:
                 if len(self.data) <= int(change[0]) or len(
                     self.data[0]) <= int(change[1]
@@ -141,7 +140,7 @@ class Manager:
             print("nie podano argumentów - plik zapisany bez zmian")
 
     def printer(self):
-        system("cls" if name == "nt" else "clear")
+        #system("cls" if name == "nt" else "clear")
         print("\n")
         for line in self.data:
             print(line)
